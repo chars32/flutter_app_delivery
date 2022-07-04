@@ -14,6 +14,7 @@ class LoginPage extends StatelessWidget {
         // Posicionar elementos uno encima del otro
         children: [
           _backgroundCover(context),
+          _boxForm(context),
           Column(
             // Posicionar elementos uno debajo del otro
             children: [_imageCover(), _textAppName()],
@@ -28,7 +29,7 @@ class LoginPage extends StatelessWidget {
 Widget _imageCover() {
   return SafeArea(
     child: Container(
-      margin: const EdgeInsets.only(top: 20.0, bottom: 15.0),
+      margin: const EdgeInsets.only(top: 30.0, bottom: 15.0),
       alignment: Alignment.topCenter,
       child: Image.asset(
         'assets/images/delivery.png',
@@ -43,7 +44,7 @@ Widget _textAppName() {
   return const Text(
     'DELIVERY MYSQL',
     style: TextStyle(
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
@@ -53,7 +54,7 @@ Widget _textAppName() {
 Widget _backgroundCover(BuildContext context) {
   return Container(
     width: double.infinity,
-    height: MediaQuery.of(context).size.height * 0.4,
+    height: MediaQuery.of(context).size.height * 0.42,
     color: Colors.amber,
   );
 }
@@ -80,5 +81,95 @@ Widget _textDontHaveAccount() {
         ),
       ),
     ],
+  );
+}
+
+Widget _boxForm(BuildContext context) {
+  return Container(
+    margin: EdgeInsets.only(
+      top: MediaQuery.of(context).size.height * 0.35,
+      right: 50,
+      left: 50,
+    ),
+    decoration: const BoxDecoration(
+      color: Colors.white,
+      boxShadow: <BoxShadow>[
+        BoxShadow(
+          color: Colors.black54,
+          blurRadius: 15,
+          offset: Offset(0, 0.75),
+        )
+      ],
+    ),
+    height: MediaQuery.of(context).size.height * 0.45,
+    child: SingleChildScrollView(
+      child: Column(
+        children: [
+          _textYourInfo(),
+          _textFieldEmail(),
+          _textFieldPassword(),
+          _buttonLogin(),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _textYourInfo() {
+  return Container(
+    margin: const EdgeInsets.only(top: 40, bottom: 45),
+    child: const Text(
+      'INGRESA TU INFORMACION',
+      style: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
+    ),
+  );
+}
+
+Widget _textFieldEmail() {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 40),
+    child: const TextField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        hintText: 'Correo electronico',
+        prefixIcon: Icon(Icons.email),
+      ),
+    ),
+  );
+}
+
+Widget _textFieldPassword() {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 40),
+    child: const TextField(
+      obscureText: true,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        hintText: 'Contraseña',
+        prefixIcon: Icon(Icons.lock),
+      ),
+    ),
+  );
+}
+
+Widget _buttonLogin() {
+  return Container(
+    width: double.infinity,
+    margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+    child: ElevatedButton(
+      onPressed: () {},
+      style:
+          ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(vertical: 15)),
+      child: const Text(
+        'LOGIN',
+        style: TextStyle(
+          color: Colors.black,
+        ),
+      ),
+    ),
   );
 }
