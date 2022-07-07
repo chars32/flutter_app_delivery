@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_delivery/src/pages/login/login_controller.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  // const LoginPage({Key? key}) : super(key: key);
+  LoginController con = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: SizedBox(
         height: 50,
-        child: _textDontHaveAccount(),
+        child: _textDontHaveAccount(con),
       ),
       body: Stack(
         // Posicionar elementos uno encima del otro
@@ -59,25 +62,29 @@ Widget _backgroundCover(BuildContext context) {
   );
 }
 
-Widget _textDontHaveAccount() {
+Widget _textDontHaveAccount(con) {
   return Row(
     // Ubicar elementos uno al lado de otro
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const [
-      Text(
+    children: [
+      const Text(
         '¿No tienes cuenta?',
         style: TextStyle(
           color: Colors.black,
           fontSize: 16,
         ),
       ),
-      SizedBox(width: 7),
-      Text(
-        'Registrate Aqui',
-        style: TextStyle(
-          color: Colors.amber,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
+      const SizedBox(width: 7),
+      GestureDetector(
+        onTap: () => con.goToRegisterPage(),
+        // onTap: () => print("perro"),
+        child: const Text(
+          'Registrate Aqui',
+          style: TextStyle(
+            color: Colors.amber,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
         ),
       ),
     ],

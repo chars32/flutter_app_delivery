@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_delivery/src/pages/login/login_page.dart';
+import 'package:flutter_app_delivery/src/pages/register/register_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -31,6 +32,10 @@ class _MyAppState extends State<MyApp> {
         GetPage(
           name: '/',
           page: () => LoginPage(),
+        ),
+        GetPage(
+          name: '/register',
+          page: () => RegisterPage(),
         ),
       ],
       theme: ThemeData(
