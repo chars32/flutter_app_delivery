@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: SizedBox(
         height: 50,
-        child: _textDontHaveAccount(con),
+        child: _textDontHaveAccount(),
       ),
       body: Stack(
         // Posicionar elementos uno encima del otro
@@ -26,157 +26,161 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-}
 
 // _PRIVATE
-Widget _imageCover() {
-  return SafeArea(
-    child: Container(
-      margin: const EdgeInsets.only(top: 30.0, bottom: 15.0),
-      alignment: Alignment.topCenter,
-      child: Image.asset(
-        'assets/images/delivery.png',
-        height: 130,
-        width: 130,
-      ),
-    ),
-  );
-}
-
-Widget _textAppName() {
-  return const Text(
-    'DELIVERY MYSQL',
-    style: TextStyle(
-      fontSize: 22,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-    ),
-  );
-}
-
-Widget _backgroundCover(BuildContext context) {
-  return Container(
-    width: double.infinity,
-    height: MediaQuery.of(context).size.height * 0.42,
-    color: Colors.amber,
-  );
-}
-
-Widget _textDontHaveAccount(con) {
-  return Row(
-    // Ubicar elementos uno al lado de otro
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      const Text(
-        '¿No tienes cuenta?',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 16,
+  Widget _imageCover() {
+    return SafeArea(
+      child: Container(
+        margin: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+        alignment: Alignment.topCenter,
+        child: Image.asset(
+          'assets/images/delivery.png',
+          height: 130,
+          width: 130,
         ),
       ),
-      const SizedBox(width: 7),
-      GestureDetector(
-        onTap: () => con.goToRegisterPage(),
-        // onTap: () => print("perro"),
-        child: const Text(
-          'Registrate Aqui',
+    );
+  }
+
+  Widget _textAppName() {
+    return const Text(
+      'DELIVERY MYSQL',
+      style: TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      ),
+    );
+  }
+
+  Widget _backgroundCover(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height * 0.42,
+      color: Colors.amber,
+    );
+  }
+
+  Widget _textDontHaveAccount() {
+    return Row(
+      // Ubicar elementos uno al lado de otro
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          '¿No tienes cuenta?',
           style: TextStyle(
-            color: Colors.amber,
-            fontWeight: FontWeight.bold,
+            color: Colors.black,
             fontSize: 16,
           ),
         ),
-      ),
-    ],
-  );
-}
-
-Widget _boxForm(BuildContext context) {
-  return Container(
-    margin: EdgeInsets.only(
-      top: MediaQuery.of(context).size.height * 0.35,
-      right: 50,
-      left: 50,
-    ),
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      boxShadow: <BoxShadow>[
-        BoxShadow(
-          color: Colors.black54,
-          blurRadius: 15,
-          offset: Offset(0, 0.75),
-        )
+        const SizedBox(width: 7),
+        GestureDetector(
+          onTap: () => con.goToRegisterPage(),
+          // onTap: () => print("perro"),
+          child: const Text(
+            'Registrate Aqui',
+            style: TextStyle(
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
       ],
-    ),
-    height: MediaQuery.of(context).size.height * 0.45,
-    child: SingleChildScrollView(
-      child: Column(
-        children: [
-          _textYourInfo(),
-          _textFieldEmail(),
-          _textFieldPassword(),
-          _buttonLogin(),
+    );
+  }
+
+  Widget _boxForm(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+        top: MediaQuery.of(context).size.height * 0.35,
+        right: 50,
+        left: 50,
+      ),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black54,
+            blurRadius: 15,
+            offset: Offset(0, 0.75),
+          )
         ],
       ),
-    ),
-  );
-}
-
-Widget _textYourInfo() {
-  return Container(
-    margin: const EdgeInsets.only(top: 40, bottom: 45),
-    child: const Text(
-      'INGRESA TU INFORMACION',
-      style: TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-        fontSize: 16,
-      ),
-    ),
-  );
-}
-
-Widget _textFieldEmail() {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 40),
-    child: const TextField(
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        hintText: 'Correo electronico',
-        prefixIcon: Icon(Icons.email),
-      ),
-    ),
-  );
-}
-
-Widget _textFieldPassword() {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 40),
-    child: const TextField(
-      obscureText: true,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        hintText: 'Contraseña',
-        prefixIcon: Icon(Icons.lock),
-      ),
-    ),
-  );
-}
-
-Widget _buttonLogin() {
-  return Container(
-    width: double.infinity,
-    margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
-    child: ElevatedButton(
-      onPressed: () {},
-      style:
-          ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(vertical: 15)),
-      child: const Text(
-        'LOGIN',
-        style: TextStyle(
-          color: Colors.black,
+      height: MediaQuery.of(context).size.height * 0.45,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            _textYourInfo(),
+            _textFieldEmail(),
+            _textFieldPassword(),
+            _buttonLogin(),
+          ],
         ),
       ),
-    ),
-  );
+    );
+  }
+
+  Widget _textYourInfo() {
+    return Container(
+      margin: const EdgeInsets.only(top: 40, bottom: 45),
+      child: const Text(
+        'INGRESA TU INFORMACION',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldEmail() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        controller: con.emailController,
+        keyboardType: TextInputType.emailAddress,
+        decoration: const InputDecoration(
+          hintText: 'Correo electronico',
+          prefixIcon: Icon(Icons.email),
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldPassword() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        controller: con.passwordController,
+        obscureText: true,
+        keyboardType: TextInputType.text,
+        decoration: const InputDecoration(
+          hintText: 'Contraseña',
+          prefixIcon: Icon(Icons.lock),
+        ),
+      ),
+    );
+  }
+
+  Widget _buttonLogin() {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+      child: ElevatedButton(
+        onPressed: () {
+          con.login();
+        },
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(vertical: 15)),
+        child: const Text(
+          'LOGIN',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
 }
